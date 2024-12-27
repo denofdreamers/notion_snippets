@@ -4,15 +4,13 @@
 
 <style>
 .canvas {
-    position: relative;
-    top: 0;
-    left: 0;
+    top: 0px;
+    left: 0px;
     height: 100vh;
-    width: 100vw;
-    background-color: #ccc;
+    background-color:#ccc;
+    background-image: none;
     background-repeat: no-repeat;
     background-size: cover;
-    overflow: hidden;
 }
 
 /* ---------------------- */
@@ -25,16 +23,21 @@
     padding: 4.4px 14px;
     color: #000;
     font-size: 12px;
-    font-family: Arial, sans-serif;
+    font-family: arial;
     font-weight: 500;
-    letter-spacing: 0.1em;
+    letter-spacing: .1em;
     text-decoration: none;
     vertical-align: middle;
 }
 
-.button-tabs:hover {
+.button:hover {
     background: #000;
-    color: #fff;
+    color: #000;
+}
+
+.button:active {
+    border-top-color: #000;
+    background: #000000;
 }
 
 .slick-slide {
@@ -42,13 +45,12 @@
 }
 
 #menu {
-    background-color: rgba(204, 204, 221, 0.8);
+    background-color: #cccd;
     position: fixed;
-    left: 0;
-    bottom: 0;
+    left: 0px;
+    bottom: 0px;
     width: 100%;
     height: 18vh;
-    z-index: 10;
 }
 
 #trash {
@@ -57,8 +59,8 @@
     height: 150px;
     background-repeat: no-repeat;
     background-size: cover;
-    margin-top: -50px;
-    margin-left: 10px;
+    margin-top: -570px;
+    margin-left: 0px;
 }
 
 .slider-image {
@@ -71,16 +73,25 @@
 .slider-size {
     width: 90vw;
     position: absolute;
-    bottom: 0;
+    bottom: 0px;
     left: 40px;
 }
+
+.flip {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+/* Garbage... need to fix */
 
 .chosen-img {
     position: absolute;
     top: 40%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
+}
+
+.canvas img {
+    height: 30vh;
 }
 
 .ui-resizable-handle {
@@ -92,8 +103,13 @@
 }
 
 .ui-resizable-se {
-    bottom: 1px;
-    right: 1px;
+    bottom: 1.2px;
+    right: 1.2px;
+}
+
+.blocks {
+    display: inline-block;
+    width: 30%;
 }
 
 .block {
@@ -101,7 +117,7 @@
     height: 50%;
     padding: 10px;
     border: 1px solid #C8C8C8;
-    margin: 0;
+    margin: 0px;
     background-color: #fff;
     margin-left: auto;
     margin-right: auto;
@@ -118,7 +134,61 @@
     <button class="js-filter-cozycore button-tabs">cozycore</button>
 
     <div class="filtering slider-size">
-        <!-- Add slider content here -->
+        <!-- logos -->
+        <div class="logos">
+            <img src="https://i.pinimg.com/736x/b9/ed/75/b9ed75ac0a3932f0b2199f877015c175.jpg" class="slider-image">
+        </div>
+        <div class="logos">
+            <img src="https://i.pinimg.com/736x/90/3a/9b/903a9b1efc303d2af7d9adf1968f34e7.jpg" class="slider-image">
+        </div>
+        <div class="logos">
+            <img src="https://i.pinimg.com/564x/3a/be/bb/3abebb42408091a1a479332926885696.jpg" class="slider-image">
+        </div>
+        <div class="logos">
+            <img src="https://i.pinimg.com/736x/2b/43/b4/2b43b42046e7748c2555c2b4d2ab2178.jpg" class="slider-image">
+        </div>   
+        <div class="logos">
+            <img src="https://i.pinimg.com/736x/dc/ba/91/dcba9167ac516d61da3f61d52a080001.jpg" class="slider-image">
+        </div>
+        <div class="logos">
+            <img src="https://i.pinimg.com/564x/15/08/77/150877fac82ab6b120685d14a606928d.jpg" class="slider-image">
+        </div>        
+        
+        <!-- images -->
+        <div class="images">
+            <img src="https://i.pinimg.com/564x/33/62/b7/3362b771bd9d88921dca68768db17435.jpg" class="slider-image">
+        </div>
+        <div class="images">
+            <img src="https://i.pinimg.com/564x/7f/f2/70/7ff270af772e3422e06751ed69b28d57.jpg" class="slider-image">
+        </div>
+        <div class="images">
+            <img src="https://i.pinimg.com/564x/0e/46/55/0e4655089e504e5cc7c083675c8a2a91.jpg" class="slider-image">
+        </div>
+        <div class="images">
+            <img src="https://i.pinimg.com/564x/b1/06/9a/b1069a08422ec3203fff42529427c95e.jpg" class="slider-image">
+        </div>
+        <div class="images">
+            <img src="https://i.pinimg.com/564x/ae/b8/ad/aeb8ade55d4c144fc77d7d9fafbac1fc.jpg" class="slider-image">
+        </div>
+
+        <div class="images">
+        <img src="https://i.pinimg.com/564x/d0/77/7d/d0777d9d59982ee1378386a7876fc8be.jpg" class="slider-image">
+        </div>        
+        
+        
+        
+        
+        <!-- femmefatale -->
+        <div class="cozycore">
+            <img src="https://i.pinimg.com/564x/93/c7/53/93c75312a8eac7d7d9b7d14811940273.jpg" class="slider-image">
+        </div>
+        <div class="cozycore">
+            <img src="https://i.pinimg.com/564x/da/cd/e5/dacde5b205236504afd64d335211722b.jpg" class="slider-image">
+        </div>
+        
+        
+        
+        
     </div>
 
     <div id="trash"></div>
@@ -139,7 +209,9 @@ $(function() {
     });
 });
 
-// Slick slider initialization
+//---------------------------------------------
+// Item carousel tab control (Slick with jQuery)
+//---------------------------------------------
 $('.filtering').slick({
     responsive: [
         {
@@ -148,18 +220,18 @@ $('.filtering').slick({
                 slidesToShow: 5,
                 slidesToScroll: 5,
                 infinite: true,
-                variableWidth: true
+                variableWidth: true,
             }
         },
         {
-            breakpoint: 800,
+            breakpoint: 600,
             settings: {
                 slidesToShow: 2,
                 slidesToScroll: 2
             }
         },
         {
-            breakpoint: 600,
+            breakpoint: 800,
             settings: {
                 slidesToShow: 1,
                 slidesToScroll: 1
@@ -168,7 +240,6 @@ $('.filtering').slick({
     ]
 });
 
-// Filtering logic
 $('.js-filter-logos').on('click', function() {
     $('.filtering').slick('slickUnfilter');
     $('.filtering').slick('slickFilter', '.logos');
@@ -184,17 +255,19 @@ $('.js-filter-cozycore').on('click', function() {
     $('.filtering').slick('slickFilter', '.cozycore');
 });
 
-// Drag and resize
+//---------------------------------------------
+// Drag, resize, rotate element (jQuery)
+//---------------------------------------------
 var i = 0;
 $(".slider-image").click(function() {
-    var clone = $(this).clone();
-    var newID = 'sticker_' + i++;
+    var clone = $(this).clone(); // Copy clicked thing
+    var newID = 'sticker_' + i++; // Make a new name for it
 
     $("<div />", { id: newID })
-        .addClass('chosen-img')
+        .attr('class', 'chosen-img')
         .appendTo('.canvas')
         .draggable({
-            stack: '.chosen-img',
+            stack: '.chosen-img', // img z-index cont
             containment: '.canvas'
         })
         .append(clone);
@@ -202,10 +275,11 @@ $(".slider-image").click(function() {
     clone
         .removeClass('slider-image')
         .resizable({
+            //autoHide: true,
             aspectRatio: true,
             minWidth: 20,
             maxWidth: 500,
-            handles: 'se'
+            handles: 'se', // Show resize handle
         });
 });
 </script>
