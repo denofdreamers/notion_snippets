@@ -1,122 +1,285 @@
-<div class="container">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick-theme.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
 
-<div id="moodboard" class="draggableContainer">
-<p>
+<style>
+.canvas {
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    background-color:#ccc;
+    background-image: none;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
-<img class="draggableImage1" width="230px" alt="amethyst" src="https://static.showit.co/file/-e80SdkiQi-
-gGqr2ahhlGA/118367/6d9bb679d6acc5ffb77d54b86ff8121c.jpg" style="position: absolute; left: 10px; top:
+/* ---------------------- */
+/* The Bottom Sticker Menu */
+/* ---------------------- */
+.button-tabs {
+    position: relative;
+    float: left;
+    top: -2.2em;
+    padding: 4.4px 14px;
+    color: #000;
+    font-size: 12px;
+    font-family: arial;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-decoration: none;
+    vertical-align: middle;
+}
 
-15px;">
-</p>
-</div>
+.button:hover {
+    background: #000;
+    color: #000;
+}
 
-<div id="moodboard" class="draggableContainer">
-<p>
+.button:active {
+    border-top-color: #000;
+    background: #000000;
+}
 
-<img class="draggableImage2" width="260px" alt="grid" src="https://static.showit.co/file/MHXNNfhYTMeJ8ejz-
-SU6Gg/118367/839bb239ec96493cac3d6eef15247c8d.jpg" style="position: absolute; left: 190px; top:
+.slick-slide {
+    outline: none !important;
+}
 
-433px;">
-</p>
-</div>
-<div id="moodboard" class="draggableContainer">
-<p>
+#menu {
+    background-color: #cccd;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 18vh;
+}
 
-<img class="draggableImage14" width="210px" alt="bluetext" src="https://static.showit.co/file/nOIADZ85Te-
-DSk7Wml77hg/118367/42d1cbf189c04335db77ab48536a4db0.jpg" style="position: absolute; left: 660px; top:
+#trash {
+    background: url(https://static.showit.co/file/DPxPd6gWTfmAK7cc2rApMg/118367/add_a_heading_13.png);
+    width: 130px;
+    height: 150px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-top: -570px;
+    margin-left: 0px;
+}
 
-60px;">
-</p>
-</div>
-<div id="moodboard" class="draggableContainer">
-<p>
+.slider-image {
+    height: 16vh;
+    margin: auto;
+    padding-bottom: 6px;
+    padding-right: 10px;
+}
 
-<img class="draggableImage5" width="180px" alt="product" src="https://static.showit.co/file/Xagy-
-NuERkWF2SlyFc7i8Q/118367/1b889852b4afe597eae96a4d8baf7601.jpg" style="position: absolute; left: 300px;
+.slider-size {
+    width: 90vw;
+    position: absolute;
+    bottom: 0px;
+    left: 40px;
+}
 
-top: 0px;">
-</p>
-</div>
-<div id="moodboard" class="draggableContainer">
-<p>
-<img class="draggableImage9" width="200px" alt="pool"
-src="https://static.showit.co/file/dDJIO_0zS3WJ6hVWjFy27w/118367/b277fe5c4b53e583200d97d551739478.jpg"
-style="position: absolute; left: 200px; top: 150px;">
-</p>
-</div>
+.flip {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
 
-<div id="moodboard" class="draggableContainer">
-<p>
-<img class="draggableImage3" width="210px" alt="dior"
-src="https://static.showit.co/file/5GP6qsnFSNOMyKFbpIE9vg/118367/3a6aaeab36f04dafc0408846e7ed82e7.jpg"
-style="position: absolute; left: 470px; top: 100px;">
-</p>
-</div>
+/* Garbage... need to fix */
 
-<div id="moodboard" class="draggableContainer">
-<p>
+.chosen-img {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+}
 
-<img class="draggableImage6" width="200px" alt="paint" src="https://static.showit.co/file/Ck8M3muAQj-
-OFbEjITLlnA/118367/63bcb1a2983b2b88a92030cbca5cac98.jpg" style="position: absolute; left: 320px; top:
+.canvas img {
+    height: 30vh;
+}
 
-350px;">
-</p>
-</div>
+.ui-resizable-handle {
+    background: url(https://static.showit.co/file/VMpmYlyFRQWoAjisv4YCXA/118367/untitled_design_-_2022-06-28t114432_136.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 1.8vh;
+    height: 1.8vh;
+}
 
-<div id="moodboard" class="draggableContainer">
-<p>
-<img class="draggableImage7" width="230px" alt="ballet"
-src="https://static.showit.co/file/ySZEDhxFS56Us6IBXdqeog/118367/614bce28f520f8edd9fa36e070457436.jpg"
-style="position: absolute; left: 1px; top: 350px;">
-</p>
-</div>
+.ui-resizable-se {
+    bottom: 1.2px;
+    right: 1.2px;
+}
 
-<div id="moodboard" class="draggableContainer">
-<p>
-<img class="draggableImage12" width="200px" alt="cards"
-src="https://static.showit.co/file/5ODZPnE2RdKEwvy0QZRAZw/118367/740b7e76160706dd8cf3f20bec106795.jpg"
-style="position: absolute; left: 850px; top: 260px;">
-</p>
-</div>
-<div id="moodboard" class="draggableContainer">
-<p>
+.blocks {
+    display: inline-block;
+    width: 30%;
+}
 
-<img class="draggableImage12" width="190px" alt="paris"
-src="https://static.showit.co/file/nLH_4V3MQx6FbukUh_9W3g/118367/6943a661693e5a291206a63fb12d1ccc.jpg"
-style="position: absolute; left: 870px; top: 10px;">
-</p>
-</div>
-<div id="moodboard" class="draggableContainer">
-<p>
-<img class="draggableImage12" width="200px" alt="statue"
-src="https://static.showit.co/file/wmzi7wbiSPyLZsHZ2IiVjQ/118367/fb93e56e2b9857ea2181d1a8b6e9362e.jpg"
-style="position: absolute; left: 790px; top: 420px;">
-</p>
-</div>
+.block {
+    width: 50%;
+    height: 50%;
+    padding: 10px;
+    border: 1px solid #C8C8C8;
+    margin: 0px;
+    background-color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: hidden;
+}
+</style>
 
-<div id="moodboard" class="draggableContainer">
-<p>
-<img class="draggableImage13" width="200px" alt="clip"
-src="https://static.showit.co/file/oFNod_5ETdicCy0oTIu82Q/118367/2a3da96c67a51c798a41626270cf001f.jpg"
-style="position: absolute; left: 550px; top: 390px;">
-</p>
-</div>
+<div class="canvas"></div>
 
-</div>
+<section id="menu">
+    <button class="js-filter-logos button-tabs">logos</button>
+    <button class="js-filter-images button-tabs">images</button>
+    <button class="js-filter-cozycore button-tabs">cozycore</button>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <div class="filtering slider-size">
+        <!-- logos -->
+        <div class="logos">
+            <img src="https://i.pinimg.com/736x/b9/ed/75/b9ed75ac0a3932f0b2199f877015c175.jpg" class="slider-image">
+        </div>
+        <div class="logos">
+            <img src="https://i.pinimg.com/736x/90/3a/9b/903a9b1efc303d2af7d9adf1968f34e7.jpg" class="slider-image">
+        </div>
+        <div class="logos">
+            <img src="https://i.pinimg.com/564x/3a/be/bb/3abebb42408091a1a479332926885696.jpg" class="slider-image">
+        </div>
+        <div class="logos">
+            <img src="https://i.pinimg.com/736x/2b/43/b4/2b43b42046e7748c2555c2b4d2ab2178.jpg" class="slider-image">
+        </div>   
+        <div class="logos">
+            <img src="https://i.pinimg.com/736x/dc/ba/91/dcba9167ac516d61da3f61d52a080001.jpg" class="slider-image">
+        </div>
+        <div class="logos">
+            <img src="https://i.pinimg.com/564x/15/08/77/150877fac82ab6b120685d14a606928d.jpg" class="slider-image">
+        </div>        
+        
+        <!-- images -->
+        <div class="images">
+            <img src="https://i.pinimg.com/564x/33/62/b7/3362b771bd9d88921dca68768db17435.jpg" class="slider-image">
+        </div>
+        <div class="images">
+            <img src="https://i.pinimg.com/564x/7f/f2/70/7ff270af772e3422e06751ed69b28d57.jpg" class="slider-image">
+        </div>
+        <div class="images">
+            <img src="https://i.pinimg.com/564x/0e/46/55/0e4655089e504e5cc7c083675c8a2a91.jpg" class="slider-image">
+        </div>
+        <div class="images">
+            <img src="https://i.pinimg.com/564x/b1/06/9a/b1069a08422ec3203fff42529427c95e.jpg" class="slider-image">
+        </div>
+        <div class="images">
+            <img src="https://i.pinimg.com/564x/ae/b8/ad/aeb8ade55d4c144fc77d7d9fafbac1fc.jpg" class="slider-image">
+        </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"
-integrity="sha512-
-0bEtK0USNd96MnO4XhH8jhv3nyRF0eK87pJke6pkYf3cM0uDIhNJy9ltuzqgypoIFXw3JSuiy04tVk4AjpZdZw=="
-crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <div class="images">
+        <img src="https://i.pinimg.com/564x/d0/77/7d/d0777d9d59982ee1378386a7876fc8be.jpg" class="slider-image">
+        </div>        
+        
+        
+        
+        
+        <!-- femmefatale -->
+        <div class="cozycore">
+            <img src="https://i.pinimg.com/564x/93/c7/53/93c75312a8eac7d7d9b7d14811940273.jpg" class="slider-image">
+        </div>
+        <div class="cozycore">
+            <img src="https://i.pinimg.com/564x/da/cd/e5/dacde5b205236504afd64d335211722b.jpg" class="slider-image">
+        </div>
+        
+        
+        
+        
+    </div>
+
+    <div id="trash"></div>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/gh/kenwheeler/slick@1.8.1/slick/slick.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 
 <script>
 $(function() {
-$(".draggableContainer").draggable({
-
-stack: ".draggableContainer",
+    $(".chosen-img").draggable();
+    $('#trash').droppable({
+        drop: function(event, ui) {
+            $(ui.draggable).remove();
+        }
+    });
 });
+
+//---------------------------------------------
+// Item carousel tab control (Slick with jQuery)
+//---------------------------------------------
+$('.filtering').slick({
+    responsive: [
+        {
+            breakpoint: 1500,
+            settings: {
+                slidesToShow: 5,
+                slidesToScroll: 5,
+                infinite: true,
+                variableWidth: true,
+            }
+        },
+        {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+            }
+        },
+        {
+            breakpoint: 800,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
+    ]
+});
+
+$('.js-filter-logos').on('click', function() {
+    $('.filtering').slick('slickUnfilter');
+    $('.filtering').slick('slickFilter', '.logos');
+});
+
+$('.js-filter-images').on('click', function() {
+    $('.filtering').slick('slickUnfilter');
+    $('.filtering').slick('slickFilter', '.images');
+});
+
+$('.js-filter-cozycore').on('click', function() {
+    $('.filtering').slick('slickUnfilter');
+    $('.filtering').slick('slickFilter', '.cozycore');
+});
+
+//---------------------------------------------
+// Drag, resize, rotate element (jQuery)
+//---------------------------------------------
+var i = 0;
+$(".slider-image").click(function() {
+    var clone = $(this).clone(); // Copy clicked thing
+    var newID = 'sticker_' + i++; // Make a new name for it
+
+    $("<div />", { id: newID })
+        .attr('class', 'chosen-img')
+        .appendTo('.canvas')
+        .draggable({
+            stack: '.chosen-img', // img z-index cont
+            containment: '.canvas'
+        })
+        .append(clone);
+
+    clone
+        .removeClass('slider-image')
+        .resizable({
+            //autoHide: true,
+            aspectRatio: true,
+            minWidth: 20,
+            maxWidth: 500,
+            handles: 'se', // Show resize handle
+        });
 });
 </script>
